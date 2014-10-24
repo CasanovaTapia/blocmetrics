@@ -8,8 +8,14 @@
 </head>
 <body>
   <div class="container">
-    <div class="header">
-    </div>
+    <% unless root_path %>
+      <div class="header">
+        <h3 class="brand">Blocmetrics</h3>
+        <ul class="nav masthead-nav nav-bar">
+          <li><%= link_to "Home", root_path %></li>
+        </ul>
+      </div>
+    <% end %>
 
     <% if flash[:notice] %>
       <div class="alert alert-success">
