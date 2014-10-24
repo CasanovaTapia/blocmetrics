@@ -24,3 +24,5 @@ group :doc do
 end
 
 gem 'haml-rails'
+gem 'devise'
+gem 'figaro'
