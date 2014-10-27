@@ -18,6 +18,10 @@ class EventsController < ApplicationController
   end
 
   def create
+    puts "INCOMING PARAMS: #{params}"
+    title = params['title']
+    created_at = params['created_at']
+
     @app = App.find(params[:app_id])
     @event = current_user.events.new(event_params)
     @event.app = @app

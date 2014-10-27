@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+
+  match 'events' => "events#index", via: :options
+
   get 'static/home'
 
   root to: 'static#home'
