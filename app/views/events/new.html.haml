@@ -1,0 +1,15 @@
+%h1= "New Event for #{@app.name}"
+.row
+  .col-md-8
+    = form_for [@app, @event] do |f|
+      .form-group
+        = f.label :title
+        = f.text_field :title, class: 'form-control'
+      .form-group
+        = f.label :ip_address
+        = f.text_field :ip_address, class: 'form-control'
+      .form-group
+        = f.label :web_property_id
+        = f.text_field :web_property_id, class: 'form-control'
+      .form-group
+        = f.submit "Save", class: 'btn btn-success'

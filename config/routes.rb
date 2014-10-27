@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :apps
+  resources :apps do
+    resources :events, except: [:index]
+  end
 
   devise_for :users
   get 'static/home'

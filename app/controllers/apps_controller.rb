@@ -11,6 +11,7 @@ class AppsController < ApplicationController
 
   def show
     @app = App.find(params[:id])
+    @events = @app.events
   end
 
   def edit
@@ -21,8 +22,7 @@ class AppsController < ApplicationController
     @app = current_user.apps.new(app_params)
 
     if @app.save
-      flash[:notice] = "App was saved."
-      redirect_to apps_path
+      redirect_to @app, notice: "App was saved."
     else
       flash[:error] = "App was not saved. Please try again."
       render :new
@@ -33,8 +33,7 @@ class AppsController < ApplicationController
     @app = App.find(params[:id])
 
     if @app.update_attributes(app_params)
-      flash[:notice] = "App was updated."
-      redirect_to @app
+      redirect_to @app, notice: "App was updated."
     else
       flash[:notice] = "App was not updated. Please try again."
       render :edit
@@ -45,8 +44,7 @@ class AppsController < ApplicationController
     @app = App.find(params[:id])
 
     if @app.destroy
-      flash[:notice] = "App was deleted."
-      redirect_to apps_path
+      redirect_to apps_path, notice: "App was deleted."
     else
       flash[:error] = "App was not deleted. Please try again."
       render :edit

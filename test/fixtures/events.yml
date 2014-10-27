@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  ip_address: MyString
+  web_property_id: MyString
+  user_id: 
+  app_id: 
+
+two:
+  title: MyString
+  ip_address: MyString
+  web_property_id: MyString
+  user_id: 
+  app_id: 
