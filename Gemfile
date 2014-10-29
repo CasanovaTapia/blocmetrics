@@ -31,3 +31,4 @@ end
 gem 'haml-rails'
 gem 'devise'
 gem 'figaro'
+gem 'chart-js-rails'

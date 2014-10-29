@@ -1,6 +1,6 @@
 - if current_user
   %h2= "Event data for #{current_user.name || current_user.email}'s app"
-  = current_user.events
+  %canvas#canvas{:height => "450", :width => "600"}
 
 
 - else
