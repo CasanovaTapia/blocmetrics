@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20141025022600) do
   create_table "events", force: true do |t|
     t.string   "name"
     t.string   "location"
+    t.string   "ip_address"
     t.string   "property_1"
     t.string   "property_2"
     t.integer  "user_id"

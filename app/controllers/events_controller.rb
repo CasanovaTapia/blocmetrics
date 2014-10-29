@@ -2,33 +2,28 @@ class EventsController < ApplicationController
   before_filter :set_headers
   skip_before_action :verify_authenticity_token
 
+  def index
+    @events = Event.all
+  end
+
   def create
     puts "TRACKED PARAMS HERE: #{params}"
 
-    title = params['title']
-
     @event = Event.new(event_params)
+    @event.name = params['name']
+    @event.property_1 = params['property_1']
+    @event.property_2 = params['property_2']
     @event.ip_address = request.env["REMOTE_HOST"]
-    respond_to :json
-    
 
-    if @event.save
-      redirect_to @app, notice: 'Event was successfully created.'
-    else
-      flash[:error] = "Event was not created. Please try again."
-      render :new
-    end
-  end
-
-  def destroy
-    @app = App.find(params[:app_id])
-    @event = Event.find(params[:id])
-
-    if @event.destroy
-      redirect_to events_path, notice: "Event was destroyed."
-    else
-      flash[:error] = "Event was not destroyed. Please try again."
-      render :show
+    respond_to do |format|
+      if @event.save!
+        format.json { render :status => 200,
+        :json => "Success",
+        :location => events_path }
+      else
+        format.json { render :status => 401,
+        :json => @event.errors }
+      end
     end
   end
 
@@ -42,6 +37,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :ip_address, :web_property_id)
+    params.require(:event).permit(:name, :location, :property_1, :property_2)
   end
 end

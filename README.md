@@ -3,19 +3,22 @@
 Created with [Bloc](http://bloc.io)
 View it [here](http://ct-blocmetrics.herokuapp.com)
 
-Paste the snippet to your application.js file:
+Paste the snippet to your application.js file to track page visits:
 
-var _bm_event = {
-  title: "your event title"
-  web_property_id: web_property_id
-  created_at: created_at
-}
+<script>
+    $(document).ready(function(){
+      var _bm_event = {
+        name: "page_visit",
+        location: "http://ct-blocmarks.herokuapp.com",
+        property_1: 1,
+        property_2: "property you want to receive"
+      }
 
-var _bm_request = new XMLHttpRequest();
-_bm_request.open("POST", "http://ct-blocmetrics.com/events.json", true);
-_bm_request.setRequestHeader('Content-Type', 'application/json');
-_bm_request.onreadystatechange = function() {
-  // this function runs when the Ajax request changes state.
-  // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
-};
-_bm_request.send(JSON.stringify(_bm_event));
+      var _bm_request = $.ajax({
+          url: "http://localhost:3001/events",
+          method: "post",
+          data: {event: _bm_event}
+      })
+
+    })
+</script>

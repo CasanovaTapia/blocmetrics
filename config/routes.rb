@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
-  resources :apps do
-    resources :events, except: [:index]
-  end
+  resources :events, except: [:index]
 
   match 'events' => "events#index", via: :options
 
   devise_for :users
 
-  get 'static/home'
+  # get 'static/home'
 
-  root to: 'static#home'
+  root to: 'events#index'
 end
