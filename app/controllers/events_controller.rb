@@ -10,9 +10,6 @@ class EventsController < ApplicationController
     puts "TRACKED PARAMS HERE: #{params}"
 
     @event = Event.new(event_params)
-    @event.name = params['name']
-    @event.property_1 = params['property_1']
-    @event.property_2 = params['property_2']
     @event.ip_address = request.env["REMOTE_HOST"]
 
     respond_to do |format|
