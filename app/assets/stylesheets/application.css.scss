@@ -12,23 +12,37 @@ a.btn {
 
 // Header
 .header {
-  margin-top: 15px;
+  margin-top: 20px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .nav-link {
   margin-left: 10px;
+  font-size: 16px;
+  color: #555;
 }
 
 // Home Page
-.inner {
-  margin-top: 15%;
-  height: 100%;
-  background-color: #fff;
-  color: #333;
-  text-align: center;
+.brand {
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
 
 // Pages
 .container-body {
-  margin-top: 20px;
+  margin-top: 15px;
+}
+
+.inner {
+  margin-top: 5%;
+  height: 100%;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+}
+
+// Devise Forms
+.devise-forms {
+  float: none;
+  margin: 0 auto;
 }

@@ -9,7 +9,8 @@
 <body>
   <div class="container">
     <div class="header">
-        <%= link_to "Blocmetrics", root_path %>
+        <%= link_to "Blocmetrics", root_path, class: 'nav-link'%>
+        <%= link_to "About", static_about_path, class: 'nav-link' %>
 
         <div class="pull-right user-info">
           <% if current_user %>
@@ -41,7 +42,9 @@
 
 
     <div class="container container-body">
-      <%= yield %>
+      <div class="inner cover center-block">
+        <%= yield %>
+      </div>
     </div>
   </div>
 </body>
