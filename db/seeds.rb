@@ -13,12 +13,14 @@ users = User.all
 
 # Create Page Visits
 100.times do
+  @user = users.sample
   Event.create!(
     name: "page_visit",
     location: "http://localhost:3000",
     property_1: 1,
-    property_2: users.sample.email,
+    property_2: @user.email,
     ip_address: Faker::Internet.ip_v4_address,
+    user_key: @user.unique_key,
     created_at: Faker::Time.between(300.days.ago, Time.now)
   )
 end

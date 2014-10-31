@@ -1,9 +1,6 @@
 - if current_user
   %h2= "Event data for #{current_user.name || current_user.email}'s app"
-  %p= "#{Event.all.collect(&:ip_address).uniq.count} unique visits"
-  %p= "#{Event.all.collect(&:property_2).uniq.count} unique users"
-
-  %canvas#canvas{:height => "450", :width => "600"}
+  %h3= "Unique Key: #{current_user.unique_key}"
 
 - else
   %h1.brand Blocmetrics

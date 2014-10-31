@@ -11,15 +11,15 @@ class EventsController < ApplicationController
 
     @event = Event.new(event_params)
     @event.ip_address = request.env["REMOTE_HOST"]
-
+  
     respond_to do |format|
       if @event.save!
         format.json { render :status => 200,
-        :json => "Success",
-        :location => events_path }
+          :json => "Success",
+          :location => events_path }
       else
         format.json { render :status => 401,
-        :json => @event.errors }
+          :json => @event.errors }
       end
     end
   end
@@ -34,6 +34,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :location, :property_1, :property_2)
+    params.require(:event).permit(:name, :location, :property_1, :property_2, :user_key)
   end
 end
