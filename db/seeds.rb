@@ -11,8 +11,16 @@ require 'faker'
 end
 users = User.all
 
+# Create admin user
+admin = User.new(
+  name:     "Admin User",
+  email:    "admin@example.com",
+  password: "helloworld"
+  )
+admin.save!
+
 # Create Page Visits
-100.times do
+50.times do
   @user = users.sample
   Event.create!(
     name: "page_visit",
@@ -24,15 +32,21 @@ users = User.all
     created_at: Faker::Time.between(300.days.ago, Time.now)
   )
 end
-events = Event.all
 
-# Create admin user
-admin = User.new(
-  name:     "Admin User",
-  email:    "admin@example.com",
-  password: "helloworld"
+# Page Visits for Admin User's App
+50.times do
+  @user = admin
+  Event.create!(
+    name: "page_visit",
+    location: "http://localhost:3000",
+    property_1: 1,
+    property_2: @user.email,
+    ip_address: Faker::Internet.ip_v4_address,
+    user_key: @user.unique_key,
+    created_at: Faker::Time.between(300.days.ago, Time.now)
   )
-admin.save!
+end
+events = Event.all
 
 
 puts "Seed Finished"

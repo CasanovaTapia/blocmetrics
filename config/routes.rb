@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   get 'static/about'
+  get 'static/index'
 
   root to: 'events#index'
 end

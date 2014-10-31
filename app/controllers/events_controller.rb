@@ -1,9 +1,11 @@
 class EventsController < ApplicationController
   before_filter :set_headers
   skip_before_action :verify_authenticity_token
+  before_filter :authenticate_user!
+  before_filter :set_current_user
 
   def index
-    @events = Event.all
+    @events = Event.where(user_key: current_user.unique_key)
   end
 
   def create
@@ -11,7 +13,7 @@ class EventsController < ApplicationController
 
     @event = Event.new(event_params)
     @event.ip_address = request.env["REMOTE_HOST"]
-  
+
     respond_to do |format|
       if @event.save!
         format.json { render :status => 200,

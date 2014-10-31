@@ -6,6 +6,14 @@ class User < ActiveRecord::Base
 
   after_create :setup_unique_key
 
+  def self.current
+    Thread.current[:user]
+  end
+
+  def self.current=(user)
+    Thread.current[:user] = user
+  end
+  
   private
     def setup_unique_key
       self.update_attribute(:unique_key, SecureRandom.hex(6))
