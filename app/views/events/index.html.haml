@@ -1,9 +1,0 @@
-- if current_user
-  %h2= "Event data for #{current_user.name || current_user.email}'s app"
-  %h3= "Unique Key: #{current_user.unique_key}"
-
-- else
-  %h1.brand Blocmetrics
-  %p.lead A general purpose analytics service for tracking events on your websites
-  .btn.btn-lg.btn-default= link_to "Sign in", new_user_session_path
-  .btn.btn-lg.btn-default= link_to "Sign up", new_user_registration_path

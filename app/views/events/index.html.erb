@@ -1,0 +1,23 @@
+<h2><%= "Event data for #{current_user.name || current_user.email}'s app" %></h2>
+<p><%= "Unique Key: #{current_user.unique_key}" %></p>
+
+<canvas id="events" width="600" height="400"></canvas>
+  <%= javascript_tag do %>
+    var eventData = {
+    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "November", "December"],
+    datasets: [
+        {
+            label: "Page Visits",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: <%= @events.events_count_array.to_json %>
+            }
+        ]
+    };
+    var events= document.getElementById("events").getContext("2d");
+    new Chart(events).Line(eventData);
+  <% end %>

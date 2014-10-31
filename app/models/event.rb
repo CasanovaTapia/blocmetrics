@@ -18,12 +18,23 @@ class Event < ActiveRecord::Base
     visits
   end
 
-  def jul
-    Date.parse("2014-07-30 23:45:22")
+  # Group events by months, returns a hash with months as keys and events as values
+  def self.months
+    months = Event.all.group_by { |e| e.created_at.beginning_of_month }
   end
 
-  def month_count(month)
-    Event.where(created_at: month.beginning_of_month..month.end_of_month).count
+  # Collect and count events for a given month
+  def self.events_count(month_as_integer)
+    events_count = Event.all.months.select! { |key, value| key.month == month_as_integer }
+    events_count.values.flatten.count
+  end
+
+  def self.events_count_array
+    counts = []
+    for i in 1..12
+      counts << Event.all.events_count(i)
+    end
+    counts
   end
 
 end
