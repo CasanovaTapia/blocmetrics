@@ -7,7 +7,7 @@ jQuery ->
         strokeColor : "rgba(220,220,220,1)",
         pointColor : "rgba(220,220,220,1)",
         pointStrokeColor : "#fff",
-        data : [ 50, 17, 87, 20, 46, 72, 63 ]
+        data : [ 65, 17, 87, 20, 46, 72, 63 ]
       },
     ]
   }

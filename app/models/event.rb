@@ -18,5 +18,12 @@ class Event < ActiveRecord::Base
     visits
   end
 
+  def jul
+    Date.parse("2014-07-30 23:45:22")
+  end
+
+  def month_count(month)
+    Event.where(created_at: month.beginning_of_month..month.end_of_month).count
+  end
 
 end
