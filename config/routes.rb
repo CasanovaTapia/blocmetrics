@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   get 'static/about'
   get 'static/index'
 
-  root to: 'events#index'
+  root to: 'static#index'
 end

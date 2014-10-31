@@ -1,0 +1,9 @@
+.inner.cover
+  %h1 Blocmetrics
+  %p.lead A general purpose analytics tool
+  - if current_user
+    = link_to "My Dashboard", events_path, method: :options, class: 'btn btn-lg btn-default'
+  - else
+    %p You need a Blocmetrics account to continue
+    = link_to "Sign in", new_user_session_path, class: 'btn btn-lg btn-default'
+    = link_to "Sign up", new_user_registration_path, class: 'btn btn-lg btn-default'
