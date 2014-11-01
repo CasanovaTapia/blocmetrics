@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
   before_filter :set_headers
-  skip_before_action :verify_authenticity_token
-  before_filter :authenticate_user!
-  before_filter :set_current_user
+  skip_before_filter :verify_authenticity_token, only: [:create]
+  # before_filter :authenticate_user!
+  # before_filter :set_current_user
 
   def index
     @events = Event.where(user_key: current_user.unique_key)
@@ -32,6 +32,7 @@ class EventsController < ApplicationController
     headers['Access-Control-Allow-Origin'] = '*'
     headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
     headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    headers['Access-Control-Request-Method'] = '*'
     headers['Access-Control-Max-Age'] = '1728000'
   end
 
