@@ -15,7 +15,7 @@ var blocmetrics = function(title, domain, count, visitor_email, unique_key) {
   }
 
   var _bm_request = $.ajax({
-      url: "http://localhost:3001/events",
+      url: "http://ct-blocmetrics.herokuapp.com/events",
       method: "post",
       data: {event: _bm_event}
   })
