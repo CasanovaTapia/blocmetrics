@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
   before_filter :set_headers
   skip_before_filter :verify_authenticity_token, only: [:create]
-  # before_filter :authenticate_user!
-  # before_filter :set_current_user
+  before_filter :authenticate_user!
+  before_filter :set_current_user
 
   def index
     @events = Event.where(user_key: current_user.unique_key)
