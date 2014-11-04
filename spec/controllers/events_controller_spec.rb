@@ -4,7 +4,9 @@ RSpec.describe EventsController, :type => :controller do
   describe "POST" do
 
     before do
-      post :create, event[name: "Event name", location: "http://example.com", property_1: "sample property", property_2: "another sample", created_at: (@t = Time.now)]
+      @user = FactoryGirl.create(:user)
+      sign_in @user
+      post :create, name: "Event name", location: "http://example.com", :'property_1' => "sample property", :'property_2' => "another sample"
       @event = Event.last
     end
 
